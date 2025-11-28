@@ -1,35 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephen Musangi – Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stephen Musangi — Embedded Systems Engineer</title>
+  <meta name="description" content="Portfolio — Embedded Systems, PCB Design, IoT developer. Projects, contact and resume." />
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2; --accent:#60a5fa; --glass: rgba(255,255,255,0.04);
+      --white: #e6eef8; --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#081221 0%, #07111a 60%); color:var(--white); -webkit-font-smoothing:antialiased;
+    }
+
+    /* page layout */
+    .container{max-width:1100px;margin:40px auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;font-weight:800;color:#04263b}
+    .brand h1{margin:0;font-size:20px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .navlink{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
+    .navlink:hover{background:rgba(255,255,255,0.03);color:var(--white)}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:30px;margin-top:28px;align-items:start}
+    .card{background:linear-gradient(180deg,var(--card), rgba(11,18,32,0.6));padding:26px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(3,6,10,0.6);backdrop-filter: blur(6px);}
+    .intro h2{margin:0;font-size:28px}
+    .eyebrow{color:var(--accent);font-weight:600;font-size:13px}
+    .lead{color:var(--muted);margin-top:10px}
+    .cta{margin-top:18px}
+
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:var(--glass);padding:12px;border-radius:12px;text-align:center;flex:1}
+    .stat strong{display:block;font-size:18px}
+    .stat span{color:var(--muted);font-size:13px}
+
+    /* right column */
+    .profile{display:flex;flex-direction:column;gap:12px}
+    .avatar{width:100%;height:360px;border-radius:12px;background:linear-gradient(135deg,#0ea5a4,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;color:#01202a}
+
+    /* projects */
+    .projects{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));cursor:pointer;transform:translateY(8px);opacity:0;transition:all .5s ease}
+    .project.revealed{transform:none;opacity:1}
+    .project h3{margin:0;font-size:16px}
+    .project p{color:var(--muted);font-size:13px}
+    .tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:12px}
+
+    /* contact */
+    footer{margin-top:40px;display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .contact-card{flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+    /* modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,12,0.6);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:all .25s ease}
+    .modal.open{opacity:1;visibility:visible}
+    .modal-card{width:100%;max-width:900px;background:#020617;padding:22px;border-radius:12px}
+    .modal-header{display:flex;justify-content:space-between;align-items:center}
+    .close-btn{background:none;border:0;color:var(--muted);font-size:18px}
+
+    /* small screens */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+      .avatar{height:220px}
+    }
+
+    /* subtle animations */
+    .fade-in{opacity:0;transform:translateY(8px);animation:enter .7s forwards}
+    @keyframes enter{to{opacity:1;transform:none}}
+
+    /* floating CTA */
+    .fab{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,var(--accent),#7dd3fc);color:#04263b;padding:14px 16px;border-radius:14px;border:0;box-shadow:0 8px 30px rgba(3,6,10,0.6);font-weight:700}
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#04263b;font-weight:700;text-decoration:none}
+
+  </style>
 </head>
 <body>
+  <div class="container">
+
     <header>
-        <h1>Stephen Musangi</h1>
-        <p>Embedded Systems Engineer • PCB Designer • IoT Developer</p>
+      <div class="brand">
+        <div class="logo">SM</div>
+        <div>
+          <h1>Stephen Musangi</h1>
+          <p>Embedded Systems • PCB Design • IoT</p>
+        </div>
+      </div>
+
+      <nav>
+        <a class="navlink" href="#projects">Projects</a>
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <a class="navlink" href="/resume.pdf" target="_blank">Resume</a>
+      </nav>
     </header>
 
-    <section class="intro">
-        <h2>About Me</h2>
-        <p>I build hardware and embedded systems solutions, including PCBs, IoT devices, motor drivers, sensors, and custom electronics.</p>
-    </section>
+    <main>
+      <section class="hero">
+        <div class="card intro fade-in" style="animation-delay:.05s">
+          <div class="eyebrow">Hello — I'm Stephen</div>
+          <h2>Creating hardware that thinks — reliable embedded systems & PCB design.</h2>
+          <p class="lead">I design microcontroller firmware, PCBs, and IoT solutions. My work ranges from low-level embedded drivers to full-board integrations and product-ready designs.</p>
 
-    <section class="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>✓ Custom USB Hub PCB</li>
-            <li>✓ Bone Conduction Hearing Assist Device</li>
-            <li>✓ MIDI-controlled Steam Calliope</li>
-            <li>✓ IoT Sensor Board (BME688, Soil Moisture, BH1750, nRF5340)</li>
-        </ul>
-    </section>
+          <div class="stats">
+            <div class="stat">
+              <strong>10+</strong>
+              <span>Projects</span>
+            </div>
+            <div class="stat">
+              <strong>7</strong>
+              <span>Products</span>
+            </div>
+            <div class="stat">
+              <strong>9k</strong>
+              <span>Hours</span>
+            </div>
+          </div>
 
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email: stephenmusangi@gmail.com</p>
-    </section>
+          <div class="cta">
+            <a class="button" href="#contact">Hire Me</a>
+            <a class="navlink" id="view-work" href="#projects">View projects</a>
+          </div>
+        </div>
+
+        <aside class="profile">
+          <div class="card avatar fade-in" style="animation-delay:.12s">SM</div>
+
+          <div class="card small muted">
+            <strong>Location</strong><br>
+            Nairobi, Kenya
+            <div style="height:12px"></div>
+            <strong>Tools</strong>
+            <div class="muted">KiCad · VSCode · Git · ESP32 · STM32 · Altium · LTspice</div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects" class="projects" aria-label="Projects">
+        <!-- project items -->
+        <div class="project card" data-title="Custom USB Hub PCB" data-desc="Custom USB hub board with per-port control and MOSFET switching. Built for automation machinery." data-tags="USB,Atmega,Power">
+          <h3>Custom USB Hub PCB</h3>
+          <p class="muted small">Per-port power control, custom Atmega controller, robust 2-layer design.</p>
+          <div class="tags">
+            <span class="tag">USB</span>
+            <span class="tag">Atmega</span>
+          </div>
+        </div>
+
+        <div class="project card" data-title="Bone Conduction Assist" data-desc="Open-source bone conduction hearing assist device using Teensy and audio shield." data-tags="Audio,Teensy,AssistiveTech">
+          <h3>Bone Conduction Assist</h3>
+          <p class="muted small">Teensy-based audio system with pre-amps and bone conduction output.</p>
+          <div class="tags"><span class="tag">Audio</span><span class="tag">Teensy</span></div>
+        </div>
+
+        <div class="project card" data-title="MIDI Steam Calliope" data-desc="MIDI-controlled solenoids for a steam calliope with Arduino control and timed sequencing." data-tags="MIDI,Solenoid,Arduino">
+          <h3>MIDI Steam Calliope</h3>
+          <p class="muted small">A fun hardware project combining MIDI with high-current solenoid control.</p>
+          <div class="tags"><span class="tag">MIDI</span><span class="tag">Arduino</span></div>
+        </div>
+
+        <div class="project card" data-title="IoT Sensor Board" data-desc="Low-power sensor board (BME688, BH1750, Soil Moisture) with nRF/ESP connectivity." data-tags="IoT,Sensors,nRF5340">
+          <h3>IoT Sensor Board</h3>
+          <p class="muted small">Environmental sensors with radio module for long-range telemetry.</p>
+          <div class="tags"><span class="tag">IoT</span><span class="tag">Sensors</span></div>
+        </div>
+      </section>
+
+      <section id="about" style="margin-top:26px">
+        <div class="card">
+          <h3>About</h3>
+          <p class="muted">I'm an embedded systems engineer focused on low-level firmware, PCB design, and product development. I enjoy turning rough ideas into tested hardware and clear documentation so teams can build on them.</p>
+        </div>
+      </section>
+
+      <footer id="contact">
+        <div class="contact-card card">
+          <h3>Contact</h3>
+          <p class="muted">Interested in hiring or collaborating? Send an email or download my resume.</p>
+          <p style="margin-top:8px"><a class="button" href="mailto:stephenmusangi@gmail.com">Email me</a> <a style="margin-left:10px" class="navlink" href="/resume.pdf" target="_blank">Download resume</a></p>
+        </div>
+
+        <div style="width:220px;display:flex;flex-direction:column;gap:10px">
+          <div class="card small muted">Available for freelance and contract work</div>
+          <div class="card small muted">Open to mentorship and collaboration</div>
+        </div>
+      </footer>
+
+    </main>
+
+    <button class="fab" id="open-contact">Hire me</button>
+
+  </div>
+
+  <!-- modal detail -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <strong id="modal-title">Project Title</strong>
+        <button class="close-btn" id="close-modal">✕</button>
+      </div>
+      <p id="modal-desc" class="muted small" style="margin-top:12px">Project description goes here</p>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap" id="modal-tags"></div>
+      <div style="margin-top:18px;display:flex;gap:10px">
+        <a class="button" id="view-code" href="#">View code</a>
+        <a class="navlink" id="view-more" href="#">Read more</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scroll for nav
+    document.querySelectorAll('a.navlink[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+
+    // Reveal projects when in view
+    const projects = document.querySelectorAll('.project');
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){ en.target.classList.add('revealed'); obs.unobserve(en.target); }
+      });
+    },{threshold:0.12});
+    projects.forEach(p=>obs.observe(p));
+
+    // Modal interactions
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalTags = document.getElementById('modal-tags');
+    const close = document.getElementById('close-modal');
+
+    function openModal(title,desc,tags){
+      modalTitle.textContent = title; modalDesc.textContent = desc;
+      modalTags.innerHTML = ''; tags.split(',').forEach(t=>{
+        const s=document.createElement('span'); s.className='tag'; s.textContent=t.trim(); modalTags.appendChild(s);
+      });
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    }
+
+    projects.forEach(p=>{
+      p.addEventListener('click', ()=>{
+        openModal(p.dataset.title, p.dataset.desc, p.dataset.tags);
+      });
+    });
+    close.addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
+    modal.addEventListener('click', e=>{ if(e.target===modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }});
+
+    // Floating CTA opens contact
+    document.getElementById('open-contact').addEventListener('click', ()=>{ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); });
+
+    // Little entrance animation on load
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.fade-in').forEach((el,i)=>{ el.style.animationDelay = (i*80)+'ms'; el.classList.add('fade-in'); });
+    });
+
+  </script>
 </body>
 </html>
