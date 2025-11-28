@@ -1,21 +1,77 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5f5f5;
-    color: #222;
+:root{
+  --bg:#0f1720; --card:#0b1220; --muted:#9aa4b2; --accent:#60a5fa; --glass: rgba(255,255,255,0.04);
+  --white: #e6eef8; --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#081221 0%, #07111a 60%); color:var(--white); -webkit-font-smoothing:antialiased;
 }
 
-header {
-    background: #1a1a1a;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
+/* page layout */
+.container{max-width:1100px;margin:40px auto;padding:28px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;font-weight:800;color:#04263b}
+.brand h1{margin:0;font-size:20px}
+.brand p{margin:0;color:var(--muted);font-size:13px}
+
+nav{display:flex;gap:12px;align-items:center}
+.navlink{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
+.navlink:hover{background:rgba(255,255,255,0.03);color:var(--white)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 360px;gap:30px;margin-top:28px;align-items:start}
+.card{background:linear-gradient(180deg,var(--card), rgba(11,18,32,0.6));padding:26px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(3,6,10,0.6);backdrop-filter: blur(6px);}
+.intro h2{margin:0;font-size:28px}
+.eyebrow{color:var(--accent);font-weight:600;font-size:13px}
+.lead{color:var(--muted);margin-top:10px}
+.cta{margin-top:18px}
+
+.stats{display:flex;gap:12px;margin-top:18px}
+.stat{background:var(--glass);padding:12px;border-radius:12px;text-align:center;flex:1}
+.stat strong{display:block;font-size:18px}
+.stat span{color:var(--muted);font-size:13px}
+
+/* right column */
+.profile{display:flex;flex-direction:column;gap:12px}
+.avatar{width:100%;height:360px;border-radius:12px;background:linear-gradient(135deg,#0ea5a4,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;color:#01202a}
+
+/* projects */
+.projects{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));cursor:pointer;transform:translateY(8px);opacity:0;transition:all .5s ease}
+.project.revealed{transform:none;opacity:1}
+.project h3{margin:0;font-size:16px}
+.project p{color:var(--muted);font-size:13px}
+.tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:12px}
+
+/* contact */
+footer{margin-top:40px;display:flex;gap:18px;align-items:center;justify-content:space-between}
+.contact-card{flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(2,6,12,0.6);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:all .25s ease}
+.modal.open{opacity:1;visibility:visible}
+.modal-card{width:100%;max-width:900px;background:#020617;padding:22px;border-radius:12px}
+.modal-header{display:flex;justify-content:space-between;align-items:center}
+.close-btn{background:none;border:0;color:var(--muted);font-size:18px}
+
+/* small screens */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .projects{grid-template-columns:1fr}
+  .avatar{height:220px}
 }
 
-section {
-    padding: 20px;
-    margin: 20px;
-    background: white;
-    border-radius: 8px;
-}
+/* subtle animations */
+.fade-in{opacity:0;transform:translateY(8px);animation:enter .7s forwards}
+@keyframes enter{to{opacity:1;transform:none}}
+
+/* floating CTA */
+.fab{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,var(--accent),#7dd3fc);color:#04263b;padding:14px 16px;border-radius:14px;border:0;box-shadow:0 8px 30px rgba(3,6,10,0.6);font-weight:700}
+
+/* utility */
+.muted{color:var(--muted)}
+.small{font-size:13px}
+a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#04263b;font-weight:700;text-decoration:none}
