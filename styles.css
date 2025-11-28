@@ -37,17 +37,19 @@ nav{display:flex;gap:12px;align-items:center}
 .profile{display:flex;flex-direction:column;gap:12px}
 
 /* Avatar container (card) */
+
+/* Responsive avatar (replace previous avatar rules) */
 .avatar{
-  padding: 0;                 /* remove the card inner padding */
+  padding: 0;
   overflow: hidden;
-  background: linear-gradient(180deg,#0ea5a4,#60a5fa); /* fallback removed visually by frame */
+  background: linear-gradient(180deg,#0ea5a4,#60a5fa);
 }
 
-/* outer frame keeps the same radius and shadowing as other cards */
+/* frame: responsive height using viewport width */
 .avatar-frame {
   width: 100%;
-  height: 360px;
-  min-height: 240px;          /* safety for very small viewports */
+  /* height responsive: prefer a comfortable max, scale with vw for phones */
+  height: min(520px, 56vw);    /* desktop up to 520px; on phones ~56% of viewport width */
   border-radius: var(--radius);
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -58,41 +60,52 @@ nav{display:flex;gap:12px;align-items:center}
   align-items:center;
   justify-content:center;
   transition: transform .35s ease, box-shadow .35s ease;
+  min-height: 220px; /* safety */
 }
 
-/* the actual image (covers the frame, keeps aspect ratio) */
+/* the actual image */
 .avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 17%;   /* tuned for your photo */
-  transform: scale(1.05);     /* slight zoom to remove extra top space */
+  /* slightly lower the face for better balance on many screens (increase to show more lower face) */
+  object-position: 50% 28%;
+  transform: scale(1.03);     /* small zoom to remove top whitespace but not over-zoom */
   transition: transform .6s cubic-bezier(.2,.9,.2,1), filter .35s ease;
-  filter: brightness(1.04) contrast(1.05);
+  filter: brightness(1.03) contrast(1.04);
 }
 
-/* hover / focus micro-zoom on the frame */
+/* hover / focus micro-zoom */
 .avatar-frame:hover,
-.avatar-frame:focus-within{
+.avatar-frame:focus-within {
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 12px 40px rgba(3,6,10,0.6);
 }
-
-/* gentle zoom on the image itself */
 .avatar-frame:hover .avatar-img,
 .avatar-frame:focus-within .avatar-img {
   transform: scale(1.06);
 }
 
-/* mobile adjustments */
-@media (max-width: 900px) {
+/* mobile tweaks (narrow phones) */
+@media (max-width: 480px) {
+  /* reduce zoom on very small screens so lower face remains visible */
   .avatar-frame {
-    height: 420px;       /* good for portrait images on phones */
+    height: calc(56vw + 24px); /* slightly taller than 56vw to avoid tight crop */
   }
-
   .avatar-img {
-    object-position: 50% 30%;  /* mobile tweak so the face sits nicely */
-    transform: scale(1.08);
+    object-position: 50% 36%;  /* move the crop down so mouth is visible */
+    transform: scale(1.01);    /* almost no zoom */
+  }
+}
+
+/* slightly larger phones / small tablets */
+@media (min-width:481px) and (max-width:900px) {
+  .avatar-frame {
+    height: min(480px, 56vw);
+  }
+  .avatar-img {
+    object-position: 50% 32%;
+    transform: scale(1.03);
   }
 }
 
