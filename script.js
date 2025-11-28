@@ -17,33 +17,140 @@ const obs = new IntersectionObserver(entries=>{
 },{threshold:0.12});
 projects.forEach(p=>obs.observe(p));
 
-// Modal interactions
+// Modal elements (extended)
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalTags = document.getElementById('modal-tags');
 const close = document.getElementById('close-modal');
 
-function openModal(title,desc,tags){
-  modalTitle.textContent = title; modalDesc.textContent = desc;
-  modalTags.innerHTML = ''; tags.split(',').forEach(t=>{
-    const s=document.createElement('span'); s.className='tag'; s.textContent=t.trim(); modalTags.appendChild(s);
-  });
-  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+// New modal element refs (if you used the updated modal HTML)
+const imageWrapper = document.getElementById('modal-image');    // container (may be hidden)
+const imageImg = document.getElementById('modal-image-img');    // <img> inside wrapper
+
+const objectivesSection = document.getElementById('modal-objectives');
+const objectivesList = document.getElementById('modal-objectives-list');
+
+const achievedSection = document.getElementById('modal-achieved');
+const achievedBody = document.getElementById('modal-achieved-body');
+
+const challengesSection = document.getElementById('modal-challenges');
+const challengesBody = document.getElementById('modal-challenges-body');
+
+const softwareSection = document.getElementById('modal-software');
+const softwareBody = document.getElementById('modal-software-body');
+
+const viewCode = document.getElementById('view-code');
+const viewMore = document.getElementById('view-more');
+
+// Utility: open/close modal
+function openModalFromDataset(ds){
+  // Title & description
+  modalTitle.textContent = ds.title || ds['dataTitle'] || 'Project';
+  modalDesc.textContent = ds.desc || '';
+
+  // Image (optional)
+  if(ds.image){
+    imageImg.src = ds.image;
+    imageImg.alt = (ds.title ? ds.title + ' — thumbnail' : 'project image');
+    if(imageWrapper) imageWrapper.hidden = false;
+  } else if(imageWrapper) {
+    imageWrapper.hidden = true;
+  }
+
+  // Objectives - accepts pipe | comma or semicolon separated
+  if(ds.objectives){
+    const items = ds.objectives.split(/\||;|,/).map(s=>s.trim()).filter(Boolean);
+    objectivesList.innerHTML = '';
+    items.forEach(it=>{
+      const li = document.createElement('li');
+      li.textContent = it;
+      objectivesList.appendChild(li);
+    });
+    if(objectivesSection) objectivesSection.hidden = false;
+  } else {
+    if(objectivesSection) objectivesSection.hidden = true;
+  }
+
+  // How achieved
+  if(ds.achieved){
+    achievedBody.textContent = ds.achieved;
+    if(achievedSection) achievedSection.hidden = false;
+  } else {
+    if(achievedSection) achievedSection.hidden = true;
+  }
+
+  // Challenges
+  if(ds.challenges){
+    challengesBody.textContent = ds.challenges;
+    if(challengesSection) challengesSection.hidden = false;
+  } else {
+    if(challengesSection) challengesSection.hidden = true;
+  }
+
+  // Software / tools
+  if(ds.software){
+    softwareBody.textContent = ds.software;
+    if(softwareSection) softwareSection.hidden = false;
+  } else {
+    if(softwareSection) softwareSection.hidden = true;
+  }
+
+  // Tags (existing behavior)
+  modalTags.innerHTML = '';
+  const tagsRaw = ds.tags || ds['dataTags'] || '';
+  if(tagsRaw){
+    tagsRaw.split(',').map(t=>t.trim()).filter(Boolean).forEach(t=>{
+      const s = document.createElement('span');
+      s.className = 'tag';
+      s.textContent = t;
+      modalTags.appendChild(s);
+    });
+  }
+
+  // Buttons / links
+  viewCode.href = ds.repo || '#';
+  viewMore.href = ds.more || '#';
+
+  // show modal
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
 }
 
+// close modal helper
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+}
+
+// Attach click handlers to project cards
 projects.forEach(p=>{
   p.addEventListener('click', ()=>{
-    openModal(p.dataset.title, p.dataset.desc, p.dataset.tags);
+    // Use dataset (dataset keys are camelCased)
+    const ds = p.dataset;
+    openModalFromDataset(ds);
   });
 });
-close.addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
-modal.addEventListener('click', e=>{ if(e.target===modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }});
 
-// Floating CTA opens contact
-document.getElementById('open-contact').addEventListener('click', ()=>{ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); });
+// existing close interactions
+close.addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{
+  if(e.target === modal) closeModal();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') closeModal();
+});
+
+// Floating CTA opens contact (if exists)
+const openContact = document.getElementById('open-contact');
+if(openContact){
+  openContact.addEventListener('click', ()=>{ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); });
+}
 
 // Little entrance animation on load
 window.addEventListener('load', ()=>{
-  document.querySelectorAll('.fade-in').forEach((el,i)=>{ el.style.animationDelay = (i*80)+'ms'; el.classList.add('fade-in'); });
+  document.querySelectorAll('.fade-in').forEach((el,i)=>{
+    el.style.animationDelay = (i*80)+'ms';
+    el.classList.add('fade-in');
+  });
 });

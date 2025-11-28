@@ -1,165 +1,300 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stephen Musangi — Embedded Systems Engineer</title>
-  <meta name="description" content="Portfolio — Embedded Systems, PCB Design, IoT developer. Projects, contact and resume." />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stephen Musangi — Embedded Systems Engineer</title>
+    <meta name="description"
+      content="Portfolio — Embedded Systems, PCB Design, IoT developer. Projects, contact and resume." />
 
-  <!-- Google font (optional) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Google font (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet">
 
-  <!-- FAVICONS (place in <head>) -->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <!-- FAVICONS (place in <head>) -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32"
+      href="assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="assets/apple-touch-icon.png">
 
-  <!-- Optional: modern mask icon for Safari pinned tabs -->
-  <link rel="mask-icon" href="/assets/safari-mask.svg" color="#60a5fa">
-  <meta name="msapplication-TileColor" content="#0f1720">
+    <!-- Optional: modern mask icon for Safari pinned tabs -->
+    <link rel="mask-icon" href="/assets/safari-mask.svg" color="#60a5fa">
+    <meta name="msapplication-TileColor" content="#0f1720">
 
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-
-    <header>
-      <div class="brand">
-        <div class="logo">SM</div>
-        <div>
-          <h1>Stephen Musangi</h1>
-          <p>Embedded Systems • PCB Design • IoT</p>
+      <header>
+        <div class="brand">
+          <div class="logo">SM</div>
+          <div style="display: flex;flex-direction: column;gap: 5px;">
+            <h1>Stephen Musangi</h1>
+            <p> PCB Design • Embedded Systems • IoT Hardware</p>
+          </div>
         </div>
-      </div>
 
-      <nav>
-        <a class="navlink" href="#projects">Projects</a>
-        <a class="navlink" href="#about">About</a>
-        <a class="navlink" href="#contact">Contact</a>
-        <a class="navlink" href="/resume.pdf" target="_blank">Resume</a>
-      </nav>
-    </header>
+        <nav class="site-nav">
+          <a class="navlink" href="#projects">Projects</a>
+          <a class="navlink" href="#about">About</a>
+          <a class="navlink" href="#contact">Contact</a>
+          <a class="navlink" href="assets/Stephen Musangi Resume.pdf" target="_blank">Resume</a>
+        </nav>
 
-    <main>
-      <section class="hero">
-        <div class="card intro fade-in" style="animation-delay:.05s">
-          <div class="eyebrow">Hello — I'm Stephen</div>
-          <h2>Creating hardware that thinks — reliable embedded systems & PCB design.</h2>
-          <p class="lead">I design microcontroller firmware, PCBs, and IoT solutions. My work ranges from low-level embedded drivers to full-board integrations and product-ready designs.</p>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>10+</strong>
-              <span>Projects</span>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="card intro fade-in" style="animation-delay:.05s">
+            <div class="eyebrow">Hello — I'm Stephen</div>
+            <h2>Creating hardware that thinks — reliable embedded systems & PCB
+              design.</h2>
+            <p class="lead">
+            I build dependable microcontroller firmware, robust PCB architectures, and complete IoT systems. 
+            From custom drivers and high-speed interfaces to full product development, I turn complex hardware ideas 
+            into scalable, real-world solutions.
+            </p>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>200+</strong>
+                <span>Circuits & PCBs</span>
+              </div>
+              <div class="stat">
+                <strong>7</strong>
+                <span>Products</span>
+              </div>
+              <div class="stat">
+                <strong>34k</strong>
+                <span>Hours</span>
+              </div>
             </div>
-            <div class="stat">
-              <strong>7</strong>
-              <span>Products</span>
-            </div>
-            <div class="stat">
-              <strong>9k</strong>
-              <span>Hours</span>
+
+            <div class="cta">
+              <a class="button" href="#contact">Hire Me</a>
+              <a class="navlink" id="view-work" href="#projects">View
+                projects</a>
             </div>
           </div>
 
-          <div class="cta">
-            <a class="button" href="#contact">Hire Me</a>
-            <a class="navlink" id="view-work" href="#projects">View projects</a>
-          </div>
-        </div>
+          <aside class="profile">
+            <div class="card avatar fade-in" style="animation-delay:.30s">
+              <div class="avatar-frame">
+                <img src="assets/profile_photo.jpg" alt="Stephen Musangi"
+                  class="avatar-img">
+              </div>
+            </div>
 
-        <aside class="profile">
-          <div class="card avatar fade-in" style="animation-delay:.12s">
-            <div class="avatar-frame">
-              <img src="assets/profile_photo.jpg" alt="Stephen Musangi" class="avatar-img">
+            <div class="info-card card small muted">
+              <div class="info-section">
+                <div class="info-label">📍 Location</div>
+                <div class="info-value">Nairobi, Kenya</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="info-section">
+                <div class="info-label">🛠 Software</div>
+                <div class="info-value">
+                  KiCad · Altium Designer · EasyEDA Pro · Eagle CAD · LTspice
+                </div>
+              </div>
+            </div>
+
+          </aside>
+        </section>
+
+        <section id="projects" class="projects" aria-label="Projects">
+          <div class="project card" 
+            data-title="LTE GPS Tracker"
+            data-desc="Low-power LTE Cat M1 / NB-IoT GPS tracker designed for asset monitoring, featuring efficient power management, GNSS accuracy, and cloud connectivity."
+            data-image="assets/projects/LTE_Tracker.png"
+            data-tags="IoT, GNSS, LTE, Low Power"
+            data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
+            data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
+            data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
+            data-software="KiCad, LTspice, Altium Designer, PlatformIO"
+            data-repo="#"
+            data-more="#"
+          >
+
+              <div class="project-image">
+                <img src="assets/projects/LTE_Tracker.png" alt="Custom USB Hub PCB">
+              </div>
+
+              <h3>LTE GPS Tracker</h3>
+              <p class="muted small">LTE Cat M1/NB-IoT GPS tracker with power management and cloud integration.</p>
+
+              <div class="tags">
+                <span class="tag">LTE</span>
+                <span class="tag">GPS</span>
+                <span class="tag">Cloud</span>
+                <span class="tag">IoT</span>
+              </div>
+          </div>
+
+          <div class="project card" 
+              data-title="Dual Energy controller"
+              data-desc="General purpose energy controller for managing multiple power sources and loads."
+              data-tags="Energy,Power,Controller">
+
+              <div class="project-image">
+                <img src="assets/projects/Enegry_controller.png" alt="Custom USB Hub PCB">
+              </div>
+
+              <h3>Dual Energy controller</h3>
+              <p class="muted small">General purpose energy controller for managing multiple power sources and loads.</p>
+
+              <div class="tags">
+                <span class="tag">Energy</span>
+                <span class="tag">Power</span>
+                <span class="tag">Controller</span>
+              </div>
+          </div>
+        </section>
+
+        <section id="about" style="margin-top:26px">
+          <div class="card">
+            <h3>About</h3>
+            <p class="muted">I'm an embedded systems engineer focused on
+              low-level firmware, PCB design, and product development. I enjoy
+              turning rough ideas into tested hardware and clear documentation
+              so teams can build on them.</p>
+               <ul class="services-list">
+              <li><strong>Concept-to-Prototype Circuit Design:</strong> Professional circuit development backed by detailed simulations and engineering analysis.</li>
+
+              <li><strong>Manufacturable PCB Layouts:</strong> Custom PCB designs optimized for signal integrity, power efficiency, thermal performance, and smooth mass production.</li>
+
+              <li><strong>Custom Development Boards:</strong> Purpose-built boards tailored to your product’s requirements, accelerating testing and shortening development timelines.</li>
+
+              <li><strong>End-to-End IoT Hardware Engineering:</strong> Integration of sensors, wireless connectivity, power management, and embedded control for complete, deployment-ready systems.</li>
+
+              <li><strong>Reliable, Scalable Solutions:</strong> Every design is built with long-term performance, real-world durability, and future expansion in mind.</li>
+            </ul>
+          </div>
+        </section>
+
+        <footer id="contact" class="site-footer">
+          <div class="footer-inner">
+            <!-- Intro -->
+            <div class="footer-hero card">
+              <span class="pill">Say Hello 😊</span>
+              <h2>I’d Love to Hear What You’re Building.</h2>
+              <p class="muted sub">
+                Let’s talk about your idea, your product, or your next big hardware challenge. I’m always open to new collaborations.
+              </p>
+
+              <div class="cta-row">
+                <a class="btn primary" href="mailto:musangisteph@gmail.com">Email me</a>
+                <a class="btn call-btn" href="tel:+254792001961">
+                  📞 +254-792-001961
+                </a>
+                <a class="btn outline" href="assets/Stephen Musangi Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+              </div>
+            </div>
+
+            <!-- Contact & Features -->
+            <div class="footer-grid">
+              <div class="feature card feature-primary">
+                <div class="icon">✉️</div>
+                <h4>Email Support</h4>
+                <p class="muted small">Fast replies and technical follow-up available.</p>
+                <a class="muted small link" href="mailto:stephenmusangi@gmail.com">stephenmusangi@gmail.com</a>
+              </div>
+
+              <div class="feature card feature-primary">
+                <div class="icon">📍</div>
+                <h4>Office / Studio</h4>
+                <p class="muted small">Prefer in-person meetings? Let’s schedule a visit.</p>
+                <div class="muted small">Nairobi, Kenya</div>
+              </div>
+
+              <div class="feature card feature-primary">
+                <div class="icon">📞</div>
+                <h4>Call Directly</h4>
+                <p class="muted small">Available during working hours — or leave a voicemail.</p>
+                <a class="muted small link" href="tel:+254700000000">+254 700 000 000</a>
+              </div>
+            </div>
+
+            <!-- Social / Tags -->
+            <div class="footer-meta">
+              <div class="socials">
+                <!-- Placeholder icons — replace with your SVGs -->
+                <a href="https://x.com/yourhandle" target="_blank" rel="noopener" aria-label="X / Twitter">✖️ <span class="handle">@yourhandle</span></a>
+                <a href="https://www.linkedin.com/in/yourhandle" target="_blank" rel="noopener" aria-label="LinkedIn">🔗 <span class="handle">linkedin.com/in/yourhandle</span></a>
+              </div>
+
+              <div class="badges">
+                <span class="badge">Available for freelance</span>
+                <span class="badge">Open to mentorship</span>
+              </div>
             </div>
           </div>
+        </footer>
+      </main>
+
+      <button class="fab" id="open-contact">Hire me</button>
+
+    </div>
 
 
-
-          <div class="card small muted">
-            <strong>Location</strong><br>
-            Nairobi, Kenya
-            <div style="height:12px"></div>
-            <strong>Tools</strong>
-            <div class="muted">KiCad · VSCode · Git · ESP32 · STM32 · Altium · LTspice</div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="projects" class="projects" aria-label="Projects">
-        <!-- project items -->
-        <div class="project card" data-title="Custom USB Hub PCB" data-desc="Custom USB hub board with per-port control and MOSFET switching. Built for automation machinery." data-tags="USB,Atmega,Power">
-          <h3>Custom USB Hub PCB</h3>
-          <p class="muted small">Per-port power control, custom Atmega controller, robust 2-layer design.</p>
-          <div class="tags">
-            <span class="tag">USB</span>
-            <span class="tag">Atmega</span>
-          </div>
+    <!-- project detail modal -->
+    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card" role="document">
+        <div class="modal-header">
+          <strong id="modal-title">Project Title</strong>
+          <button class="close-btn" id="close-modal" aria-label="Close">✕</button>
         </div>
 
-        <div class="project card" data-title="Bone Conduction Assist" data-desc="Open-source bone conduction hearing assist device using Teensy and audio shield." data-tags="Audio,Teensy,AssistiveTech">
-          <h3>Bone Conduction Assist</h3>
-          <p class="muted small">Teensy-based audio system with pre-amps and bone conduction output.</p>
-          <div class="tags"><span class="tag">Audio</span><span class="tag">Teensy</span></div>
+        <p id="modal-desc" class="muted small" style="margin-top:12px"></p>
+
+        <!-- objectives -->
+        <div class="modal-section" id="modal-objectives" hidden>
+          <h4>Objectives</h4>
+          <ul id="modal-objectives-list"></ul>
         </div>
 
-        <div class="project card" data-title="MIDI Steam Calliope" data-desc="MIDI-controlled solenoids for a steam calliope with Arduino control and timed sequencing." data-tags="MIDI,Solenoid,Arduino">
-          <h3>MIDI Steam Calliope</h3>
-          <p class="muted small">A fun hardware project combining MIDI with high-current solenoid control.</p>
-          <div class="tags"><span class="tag">MIDI</span><span class="tag">Arduino</span></div>
+        <div class="modal-image" id="modal-image" hidden>
+          <img src="" alt="" id="modal-image-img">
         </div>
 
-        <div class="project card" data-title="IoT Sensor Board" data-desc="Low-power sensor board (BME688, BH1750, Soil Moisture) with nRF/ESP connectivity." data-tags="IoT,Sensors,nRF5340">
-          <h3>IoT Sensor Board</h3>
-          <p class="muted small">Environmental sensors with radio module for long-range telemetry.</p>
-          <div class="tags"><span class="tag">IoT</span><span class="tag">Sensors</span></div>
-        </div>
-      </section>
-
-      <section id="about" style="margin-top:26px">
-        <div class="card">
-          <h3>About</h3>
-          <p class="muted">I'm an embedded systems engineer focused on low-level firmware, PCB design, and product development. I enjoy turning rough ideas into tested hardware and clear documentation so teams can build on them.</p>
-        </div>
-      </section>
-
-      <footer id="contact">
-        <div class="contact-card card">
-          <h3>Contact</h3>
-          <p class="muted">Interested in hiring or collaborating? Send an email or download my resume.</p>
-          <p style="margin-top:8px"><a class="button" href="mailto:stephenmusangi@gmail.com">Email me</a> <a style="margin-left:10px" class="navlink" href="/resume.pdf" target="_blank">Download resume</a></p>
+        
+        <!-- how achieved -->
+        <div class="modal-section" id="modal-achieved" hidden>
+          <h4>How I achieved it</h4>
+          <div id="modal-achieved-body" class="muted small"></div>
         </div>
 
-        <div style="width:220px;display:flex;flex-direction:column;gap:10px">
-          <div class="card small muted">Available for freelance and contract work</div>
-          <div class="card small muted">Open to mentorship and collaboration</div>
+        <!-- challenges -->
+        <div class="modal-section" id="modal-challenges" hidden>
+          <h4>Challenges faced</h4>
+          <div id="modal-challenges-body" class="muted small"></div>
         </div>
-      </footer>
 
-    </main>
+        <!-- software / tools -->
+        <div class="modal-section" id="modal-software" hidden>
+          <h4>Software & Tools</h4>
+          <div id="modal-software-body" class="muted small"></div>
+        </div>
 
-    <button class="fab" id="open-contact">Hire me</button>
+        <!-- tags -->
+        <div id="modal-tags" style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"></div>
 
-  </div>
-
-  <!-- modal detail -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-header">
-        <strong id="modal-title">Project Title</strong>
-        <button class="close-btn" id="close-modal">✕</button>
-      </div>
-      <p id="modal-desc" class="muted small" style="margin-top:12px">Project description goes here</p>
-      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap" id="modal-tags"></div>
-      <div style="margin-top:18px;display:flex;gap:10px">
-        <a class="button" id="view-code" href="#">View code</a>
-        <a class="navlink" id="view-more" href="#">Read more</a>
+        <!-- actions -->
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="button" id="view-code" href="#" target="_blank" rel="noopener">View code / repo</a>
+          <a class="navlink" id="view-more" href="#" target="_blank" rel="noopener">Inquire More</a>
+        </div>
       </div>
     </div>
-  </div>
+    
 
-  <script src="script.js"></script>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
