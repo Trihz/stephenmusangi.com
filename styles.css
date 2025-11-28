@@ -36,75 +36,79 @@ nav{display:flex;gap:12px;align-items:center}
 /* right column */
 .profile{display:flex;flex-direction:column;gap:12px}
 
-/* Avatar container (card) */
+/* -------------------------
+   Avatar fixes (override)
+   ------------------------- */
 
-/* Responsive avatar (replace previous avatar rules) */
-.avatar{
-  padding: 0;
-  overflow: hidden;
-  background: linear-gradient(180deg,#0ea5a4,#60a5fa);
+/* Make sure only the avatar card loses the default card padding */
+.card.avatar {
+  padding: 0 !important;          /* override .card padding */
+  background: transparent !important; /* transparent, frame handles styling */
+  overflow: visible !important;
 }
 
-/* frame: responsive height using viewport width */
-.avatar-frame {
+/* Profile container: ensure it doesn't center/cut the avatar unexpectedly */
+.profile {
+  align-items: flex-start; /* allow avatar to size naturally */
+}
+
+/* Responsive avatar frame (higher priority selector) */
+.profile .avatar-frame {
   width: 100%;
-  /* height responsive: prefer a comfortable max, scale with vw for phones */
-  height: min(520px, 56vw);    /* desktop up to 520px; on phones ~56% of viewport width */
+  height: min(560px, 60vw);  /* responsive: larger on phones so less vertical crop */
+  min-height: 260px;
   border-radius: var(--radius);
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   box-shadow: 0 6px 30px rgba(3,6,10,0.45);
-  position: relative;
   border: 1px solid rgba(255,255,255,0.03);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: block;
   transition: transform .35s ease, box-shadow .35s ease;
-  min-height: 220px; /* safety */
+  margin: 0; /* remove any card margins causing weird gaps */
 }
 
-/* the actual image */
-.avatar-img {
+/* Image: keep crop but nudge crop down and reduce default zoom */
+.profile .avatar-frame .avatar-img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
-  /* slightly lower the face for better balance on many screens (increase to show more lower face) */
-  object-position: 50% 28%;
-  transform: scale(1.03);     /* small zoom to remove top whitespace but not over-zoom */
-  transition: transform .6s cubic-bezier(.2,.9,.2,1), filter .35s ease;
+  object-position: 50% 36% !important;   /* move crop down so mouth is visible */
+  transform: scale(1.02);                 /* slight zoom to remove top whitespace */
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), filter .25s ease;
   filter: brightness(1.03) contrast(1.04);
 }
 
-/* hover / focus micro-zoom */
-.avatar-frame:hover,
-.avatar-frame:focus-within {
+/* hover micro-zoom (kept but small) */
+.profile .avatar-frame:hover,
+.profile .avatar-frame:focus-within {
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 12px 40px rgba(3,6,10,0.6);
 }
-.avatar-frame:hover .avatar-img,
-.avatar-frame:focus-within .avatar-img {
-  transform: scale(1.06);
+.profile .avatar-frame:hover .avatar-img,
+.profile .avatar-frame:focus-within .avatar-img {
+  transform: scale(1.04);
 }
 
-/* mobile tweaks (narrow phones) */
+/* Very small phones: reduce zoom and push crop further down (show chin/mouth) */
 @media (max-width: 480px) {
-  /* reduce zoom on very small screens so lower face remains visible */
-  .avatar-frame {
-    height: calc(56vw + 24px); /* slightly taller than 56vw to avoid tight crop */
+  .profile .avatar-frame {
+    height: calc(64vw + 28px); /* slightly taller for narrow phones */
+    min-height: 300px;
   }
-  .avatar-img {
-    object-position: 50% 36%;  /* move the crop down so mouth is visible */
-    transform: scale(1.01);    /* almost no zoom */
+  .profile .avatar-frame .avatar-img {
+    object-position: 50% 44% !important; /* push down more for mouth */
+    transform: scale(1.00);               /* remove zoom so bottom of face remains visible */
   }
 }
 
-/* slightly larger phones / small tablets */
-@media (min-width:481px) and (max-width:900px) {
-  .avatar-frame {
-    height: min(480px, 56vw);
+/* Small tablets / larger phones */
+@media (min-width: 481px) and (max-width: 900px) {
+  .profile .avatar-frame {
+    height: min(520px, 56vw);
   }
-  .avatar-img {
-    object-position: 50% 32%;
+  .profile .avatar-frame .avatar-img {
+    object-position: 50% 38% !important;
     transform: scale(1.03);
   }
 }
@@ -134,7 +138,6 @@ footer{margin-top:40px;display:flex;gap:18px;align-items:center;justify-content:
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;}
   .projects{grid-template-columns:1fr}
-  .avatar{height:220px}
 }
 
 
@@ -149,3 +152,64 @@ footer{margin-top:40px;display:flex;gap:18px;align-items:center;justify-content:
 .muted{color:var(--muted)}
 .small{font-size:13px}
 a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#04263b;font-weight:700;text-decoration:none}
+
+/* ------------ Avatar override (paste at end of styles.css) ------------ */
+/* ensure any earlier .avatar height is not applied on small screens */
+.avatar {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Ensure profile container allows the avatar to expand */
+.profile { align-items: flex-start !important; }
+
+/* Stronger selectors so these rules win over previous ones */
+.profile .card.avatar,
+.profile .card.avatar .avatar-frame {
+  width: 100% !important;
+  /* responsive height: scales with viewport width but stays within bounds */
+  height: min(560px, 60vw) !important;
+  min-height: 280px !important;
+  margin: 0 !important;
+  border-radius: var(--radius) !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* Image: prefer lower crop on phones; keep object-fit cover */
+.profile .card.avatar .avatar-frame .avatar-img {
+  object-fit: cover !important;
+  object-position: 50% 40% !important; /* show more lower-face by default */
+  transform: scale(1.02) !important;
+}
+
+/* Small phones: make taller and push crop further down so mouth stays visible */
+@media (max-width: 480px) {
+  /* make the frame taller on very narrow phones so there's more vertical room */
+  .profile .card.avatar .avatar-frame {
+    /* slightly taller than before and more stable across devices */
+    height: calc(72vw + 16px) !important;
+    min-height: 360px !important;
+  }
+
+  /* push the crop further down and remove zoom to show chin */
+  .profile .card.avatar .avatar-frame .avatar-img {
+    object-position: 50% 50% !important; /* center the face vertically (shows mouth/chin) */
+    transform: scale(1.00) !important;    /* no zoom so bottom of face remains visible */
+  }
+}
+
+
+/* Small tablets / larger phones */
+@media (min-width:481px) and (max-width:900px) {
+  .profile .card.avatar .avatar-frame {
+    height: min(520px, 56vw) !important;
+  }
+  .profile .card.avatar .avatar-frame .avatar-img {
+    object-position: 50% 38% !important;
+    transform: scale(1.03) !important;
+  }
+}
+/* -------------------------------------------------------------------- */
