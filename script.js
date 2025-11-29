@@ -38,10 +38,7 @@ const challengesSection = document.getElementById('modal-challenges');
 const challengesBody = document.getElementById('modal-challenges-body');
 
 const softwareSection = document.getElementById('modal-software');
-const softwareBody = document.getElementById('modal-software-body');
-
-const viewCode = document.getElementById('view-code');
-const viewMore = document.getElementById('view-more');
+const softwareList = document.getElementById('modal-software-list');
 
 // Utility: open/close modal
 function openModalFromDataset(ds){
@@ -89,11 +86,17 @@ function openModalFromDataset(ds){
   }
 
   // Software / tools
-  if(ds.software){
-    softwareBody.textContent = ds.software;
-    if(softwareSection) softwareSection.hidden = false;
+  if (ds.software) {
+    const items = ds.software.split(/\||;|,/).map(s => s.trim()).filter(Boolean);
+    softwareList.innerHTML = '';
+    items.forEach(it => {
+      const li = document.createElement('li');
+      li.textContent = it;
+      softwareList.appendChild(li);
+    });
+    softwareSection.hidden = false;
   } else {
-    if(softwareSection) softwareSection.hidden = true;
+    softwareSection.hidden = true;
   }
 
   // Tags (existing behavior)
@@ -107,10 +110,6 @@ function openModalFromDataset(ds){
       modalTags.appendChild(s);
     });
   }
-
-  // Buttons / links
-  viewCode.href = ds.repo || '#';
-  viewMore.href = ds.more || '#';
 
   // show modal
   modal.classList.add('open');
@@ -153,4 +152,47 @@ window.addEventListener('load', ()=>{
     el.style.animationDelay = (i*80)+'ms';
     el.classList.add('fade-in');
   });
+});
+
+
+document.getElementById('copy-email').addEventListener('click', async () => {
+  const email = document.getElementById('email-text').textContent;
+  const btn = document.getElementById('copy-email');
+
+  try {
+    await navigator.clipboard.writeText(email);
+    btn.textContent = "Copied!";
+  } catch (err) {
+    const temp = document.createElement('textarea');
+    temp.value = email;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    temp.remove();
+    btn.textContent = "Copied!";
+  }
+
+  setTimeout(() => btn.textContent = "Copy", 1400);
+});
+
+
+
+document.getElementById('copy-phone').addEventListener('click', async () => {
+  const phone = document.getElementById('phone-text').textContent;
+  const btn = document.getElementById('copy-phone');
+
+  try {
+    await navigator.clipboard.writeText(phone);
+    btn.textContent = "Copied!";
+  } catch (err) {
+    const temp = document.createElement('textarea');
+    temp.value = phone;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    temp.remove();
+    btn.textContent = "Copied!";
+  }
+
+  setTimeout(() => btn.textContent = "Copy", 1400);
 });

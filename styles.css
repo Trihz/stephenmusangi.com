@@ -289,6 +289,19 @@ header{
 }
 
 
+.about-points {
+  margin-top: 12px;
+  padding-left: 18px;
+  line-height: 1.55;
+}
+
+.about-points li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+
 
 .modal{
   position:fixed;
@@ -321,26 +334,82 @@ header{
   overflow:auto;
 }
 
-/* header */
-.modal-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.close-btn{background:none;border:0;color:var(--muted);font-size:18px;cursor:pointer}
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px
+}
+#modal-title{
+  font-size:1.1rem
+}
+.close-btn{
+  background:white;
+  border:0;
+  color:black;
+  font-size:18px;
+  cursor:pointer;
+  font-weight: bold;
+  padding:6px 10px;
+  border-radius:10px;
+}
 
-/* image */
-.modal-image{margin-top:12px;border-radius:10px;overflow:hidden}
-.modal-image img{width:100%;height:auto;display:block;object-fit:cover;}
+.modal-image {
+  background: rgba(255, 255, 255, 0.045);
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+.modal-image img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain; 
+  border-radius: 10px;
+}
 
-/* sections */
-.modal-section{margin-top:14px}
-.modal-section h4{margin:0 0 6px 0;font-size:0.95rem}
-.muted.small{color:var(--muted);font-size:0.95rem;line-height:1.45}
 
-/* lists */
-#modal-objectives-list{margin:0;padding-left:18px;color:var(--muted);}
+.modal-section{
+  margin-top:16px
+}
+.modal-section h4{
+  margin:0 0 6px 0;
+  font-size:0.95rem
+}
+.muted.small{
+  color:var(--muted);
+  font-size:0.95rem;
+  line-height:1.45
+}
 
-/* tags */
-#modal-tags .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:0.9rem}
+#modal-objectives-list{
+  padding-left:18px;
+  color:var(--muted);
+  margin-top: 10px;
+}
+#modal-objectives-list li{
+  margin-bottom:8px;
+  font-size:0.95rem
+}
+#modal-software-list {
+  padding-left: 18px;
+  color: var(--muted);
+  margin-top: 10px;
+}
 
-/* responsive tweaks */
+#modal-software-list li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+#modal-tags .tag{
+  background:rgba(255,255,255,0.03);
+  padding:6px 8px;
+  border-radius:8px;
+  color:var(--muted);
+  font-size:0.9rem
+}
+
+
 @media (max-width:720px){
   .modal-card{padding:16px}
   .modal-image img{height:160px;object-fit:cover}
@@ -360,8 +429,20 @@ header{
 .fade-in{opacity:0;transform:translateY(8px);animation:enter .7s forwards}
 @keyframes enter{to{opacity:1;transform:none}}
 
-/* floating CTA */
-.fab{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,var(--accent),#7dd3fc);color:#04263b;padding:14px 16px;border-radius:14px;border:0;box-shadow:0 8px 30px rgba(3,6,10,0.6);font-weight:700}
+/* floating Hire Me CTA */
+.fab{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:linear-gradient(135deg,var(--accent),#7dd3fc);
+  color:#04263b;
+  padding:14px 16px;
+  border-radius:14px;
+  border:0;
+  box-shadow:0 8px 30px rgba(3,6,10,0.6);
+  font-weight:700;
+  cursor: pointer;
+}
 
 /* utility */
 .muted{color:var(--muted)}
@@ -471,8 +552,48 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   margin-top:6px;
 }
 
+.email-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.email-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.phone-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.phone-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.copy-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--muted);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+}
+
+
 .feature.card{
-  background: var(--card);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   padding:18px;
   border-radius:14px;
   min-height:130px;
@@ -517,9 +638,14 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   color:var(--accent); 
 }
 
-.badges{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.badges{ 
+  display:flex; 
+  gap:10px; 
+  align-items:center; 
+  flex-wrap:wrap; 
+}
 .badge{
-  background: rgba(255,255,255,0.02);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   color:var(--muted);
   padding:6px 10px;
   border-radius:999px;
