@@ -9,13 +9,47 @@ document.querySelectorAll('a.navlink[href^="#"]').forEach(a=>{
 });
 
 // Reveal projects when in view
+// REPLACE your existing IntersectionObserver callback with this version
 const projects = document.querySelectorAll('.project');
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(en=>{
-    if(en.isIntersecting){ en.target.classList.add('revealed'); obs.unobserve(en.target); }
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (!entry.isIntersecting) return;
+
+    // compute index among currently visible projects in DOM order
+    const index = Array.from(document.querySelectorAll('.project')).indexOf(el);
+
+    // base delay and increment (in ms)
+    const base = 40;       // smallest delay
+    const step = 50;       // increase per item
+    const maxDelay = 300;  // cap delay so it doesn't get too long
+
+    // compute and clamp
+    let delay = Math.min(base + (index * step), maxDelay);
+
+    // apply inline style for transition-delay (affects all transitions)
+    el.style.transitionDelay = `${delay}ms`;
+
+    // add revealed class — animation will play with the delay
+    el.classList.add('revealed');
+
+    // unobserve to avoid repeated triggers; after animation, clear transitionDelay for future style changes
+    obs.unobserve(el);
+
+    // optional: cleanup the inline delay after animation ends so future changes don't inherit it
+    el.addEventListener('transitionend', function cleanup(e) {
+      // make sure we only remove delay after the opacity/transform finished
+      if (e.propertyName === 'opacity' || e.propertyName === 'transform') {
+        el.style.transitionDelay = '';
+        el.removeEventListener('transitionend', cleanup);
+      }
+    });
   });
-},{threshold:0.12});
-projects.forEach(p=>obs.observe(p));
+}, { threshold: 0.12 });
+
+// start observing
+projects.forEach(p => obs.observe(p));
+
 
 // Modal elements (extended)
 const modal = document.getElementById('modal');
@@ -196,3 +230,81 @@ document.getElementById('copy-phone').addEventListener('click', async () => {
 
   setTimeout(() => btn.textContent = "Copy", 1400);
 });
+
+
+
+// LOAD MORE projects
+const projectCards = document.querySelectorAll('#projects .project');
+const loadMoreBtn = document.getElementById('load-more');
+const loadMoreWrapper = document.getElementById('load-more-wrapper');
+
+const MAX_VISIBLE = 4;
+
+// Initially hide projects beyond the first 4
+projectCards.forEach((card, index) => {
+  if (index >= MAX_VISIBLE) {
+    card.style.display = "none";
+  }
+});
+
+// If there are 4 or fewer projects, hide the button
+if (projectCards.length <= MAX_VISIBLE) {
+  loadMoreWrapper.style.display = "none";
+}
+
+// When clicking "Load More"
+if (loadMoreBtn) {
+  loadMoreBtn.addEventListener('click', () => {
+    projectCards.forEach(card => card.style.display = "block");
+
+    // Re-run reveal animation for newly shown cards
+    projectCards.forEach(p => obs.observe(p));
+
+    // Hide the button
+    loadMoreWrapper.style.display = "none";
+  });
+}
+
+
+const menuToggle = document.getElementById('menu-toggle');
+const siteNav = document.getElementById('site-nav');
+
+if(menuToggle && siteNav){
+  menuToggle.addEventListener('click', (e)=>{
+    const open = siteNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+    // animate hamburger into an X (simple)
+    menuToggle.classList.toggle('active');
+    if(menuToggle.classList.contains('active')){
+      // rotate the lines visually
+      document.querySelector('.hamburger').style.transform = 'rotate(45deg)';
+      document.querySelector('.hamburger').style.background = 'transparent';
+      document.querySelector('.hamburger::before'); // no-op (pseudo can't be styled here)
+      // small hack: create style for pseudo via class if needed
+    } else {
+      document.querySelector('.hamburger').style.transform = '';
+      document.querySelector('.hamburger').style.background = '';
+    }
+  });
+
+  // close when clicking outside
+  document.addEventListener('click', (ev)=>{
+    if(siteNav.classList.contains('open') && !siteNav.contains(ev.target) && !menuToggle.contains(ev.target)){
+      siteNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.classList.remove('active');
+    }
+  });
+
+  // close on ESC
+  document.addEventListener('keydown', (ev)=>{
+    if(ev.key === 'Escape' && siteNav.classList.contains('open')){
+      siteNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.classList.remove('active');
+    }
+  });
+}
+
+

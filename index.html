@@ -31,21 +31,24 @@
       <header>
         <div class="brand">
           <div class="logo">SM</div>
-          <div style="display: flex;flex-direction: column;gap: 5px;">
+          <div class="brand-text">
             <h1>Stephen Musangi</h1>
-            <p> PCB Design • Embedded Systems • IoT Hardware</p>
+            <p>PCB Design • Embedded Systems • IoT Hardware</p>
           </div>
         </div>
 
-        <nav class="site-nav">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
           <a class="navlink" href="#projects">Projects</a>
           <a class="navlink" href="#about">About</a>
           <a class="navlink" href="#contact">Contact</a>
-          <a class="navlink" href="assets/Stephen Musangi Resume.pdf" target="_blank">Resume</a>
+          <a class="navlink" href="assets/Stephen Musangi Resume.pdf" target="_blank" rel="noopener">Resume</a>
         </nav>
-
-
       </header>
+
 
       <main>
         <section class="hero">
@@ -53,7 +56,7 @@
             <div class="eyebrow">Hello — I'm Stephen</div>
             <h2>Creating hardware that thinks — reliable embedded systems & PCB
               design.</h2>
-            <p class="lead">
+            <p>
             I build dependable microcontroller firmware, robust PCB architectures, and complete IoT systems. 
             From custom drivers and high-speed interfaces to full product development, I turn complex hardware ideas 
             into scalable, real-world solutions.
@@ -90,12 +93,14 @@
             </div>
 
             <div class="info-card card small muted">
+              <!--
               <div class="info-section">
                 <div class="info-label">📍 Location</div>
                 <div class="info-value">Nairobi, Kenya</div>
               </div>
 
               <div class="divider"></div>
+              -->
 
               <div class="info-section">
                 <div class="info-label">🛠 Software</div>
@@ -208,7 +213,40 @@
               <span class="tag">IoT</span>
             </div>
           </div>
+
+          <div class="project card" 
+            data-title="LTE GPS Tracker"
+            data-desc="Low-power LTE Cat M1 / NB-IoT GPS tracker designed for asset monitoring, featuring efficient power management, GNSS accuracy, and cloud connectivity."
+            data-image="assets/projects/LTE_Tracker.png"
+            data-tags="IoT, GNSS, LTE, Low Power"
+            data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
+            data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
+            data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
+            data-software="KiCad|LTspice|Altium Designer|PlatformIO"
+            data-repo="#"
+            data-more="#"
+          >
+            <div class="project-image">
+              <img src="assets/projects/LTE_Tracker.png" alt="Custom USB Hub PCB">
+            </div>
+
+            <h3>LTE GPS Tracker</h3>
+            <p class="muted small">LTE Cat M1/NB-IoT GPS tracker with power management and cloud integration.</p>
+
+            <div class="tags">
+              <span class="tag">LTE</span>
+              <span class="tag">GPS</span>
+              <span class="tag">Cloud</span>
+              <span class="tag">IoT</span>
+            </div>
+          </div>
+          
         </section>
+
+        <div id="load-more-wrapper" style="text-align:center; margin-top:20px;">
+          <button id="load-more" class="button ghost">Load More</button>
+        </div>
+
 
         <section id="about" style="margin-top:26px">
           <div class="card">
@@ -219,21 +257,20 @@
               simulation-driven electronic systems. My expertise spans the entire hardware 
               development pipeline, including:
             </p>
-
             <ul class="about-points muted">
               <li><strong>Requirements-to-Hardware Translation:</strong> Turning functional requirements into validated circuit designs and embedded architectures.</li>
 
               <li><strong>Simulation-Driven Engineering:</strong> Using LTspice and analytical methods to verify behavior, optimize performance, and eliminate design risks early.</li>
 
-              <li><strong>Robust Circuit & PCB Development:</strong> Creating production-ready schematics and PCB layouts with focus on signal integrity, power delivery, EMI/EMC, thermal paths, and manufacturability.</li>
+              <li><strong>Circuit & PCB Development:</strong> Creating production-ready schematics and PCB layouts with focus on signal integrity, power delivery, EMI/EMC, thermal paths, and manufacturability.</li>
 
-              <li><strong>Custom Development Boards:</strong> Designing tailored test and evaluation boards to accelerate firmware development, sensor testing, driver tuning, and system validation.</li>
+              <li><strong>Custom Development Boards:</strong> Designing test and evaluation boards to accelerate firmware development, sensor testing, driver tuning, and system validation.</li>
 
               <li><strong>IoT Hardware Architecture:</strong> Integrating sensors, wireless radios, power systems, and MCU-level control into complete, deployment-ready hardware platforms.</li>
 
               <li><strong>Low-Level Firmware Engineering:</strong> Implementing drivers, peripheral interfaces, and embedded control logic for ESP32, STM32, nRF, and Atmega platforms.</li>
 
-              <li><strong>End-to-End Hardware Delivery:</strong> Documenting design decisions, generating BOMs, preparing manufacturing outputs, and supporting prototype-to-production transitions.</li>
+              <li><strong>End-to-End Hardware Delivery:</strong> Documenting design decisions, generating BOMs, preparing manufacturing files, and supporting prototype-to-production transitions.</li>
             </ul>
           </div>
         </section>
@@ -289,19 +326,22 @@
             <div class="footer-meta">
               <div class="socials">
                 <a href="https://x.com/musangisteph" target="_blank" rel="noopener" aria-label="X / Twitter">
-                  ✖️ <span class="handle">@musangisteph</span>
+                  <img src="assets/x.png" alt="X" class="social-icon">
+                  <span class="handle">@musangisteph</span>
                 </a>
                 <a href="https://www.linkedin.com/in/stephenmusangi/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                  🔗 <span class="handle">linkedin.com/in/stephenmusangi/</span>
+                  <img src="assets/linkedin.png" alt="X" class="social-icon">
+                  <span class="handle">linkedin.com/in/stephenmusangi/</span>
                 </a>
                 <a href="https://medium.com/@stephenmusangi" target="_blank" rel="noopener" aria-label="Medium">
-                  ✍️ <span class="handle">@stephenmusangi</span>
+                  <img src="assets/medium.png" alt="X" class="social-icon">
+                  <span class="handle">@stephenmusangi</span>
                 </a>
 
               </div>
 
               <div class="badges">
-                <span class="badge">Available for freelance</span>
+                <span class="badge">Available for work</span>
                 <span class="badge">Open to mentorship</span>
               </div>
             </div>
@@ -309,7 +349,7 @@
         </footer>
       </main>
 
-      <button class="fab" id="open-contact">Hire me</button>
+      <button class="floating-icon" id="open-contact">Hire me</button>
 
     </div>
 
