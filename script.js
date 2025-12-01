@@ -58,9 +58,6 @@ const modalDesc = document.getElementById('modal-desc');
 const modalTags = document.getElementById('modal-tags');
 const close = document.getElementById('close-modal');
 
-// New modal element refs (if you used the updated modal HTML)
-const imageWrapper = document.getElementById('modal-image');    // container (may be hidden)
-const imageImg = document.getElementById('modal-image-img');    // <img> inside wrapper
 
 const objectivesSection = document.getElementById('modal-objectives');
 const objectivesList = document.getElementById('modal-objectives-list');
@@ -74,20 +71,12 @@ const challengesBody = document.getElementById('modal-challenges-body');
 const softwareSection = document.getElementById('modal-software');
 const softwareList = document.getElementById('modal-software-list');
 
+
 // Utility: open/close modal
 function openModalFromDataset(ds){
   // Title & description
   modalTitle.textContent = ds.title || ds['dataTitle'] || 'Project';
   modalDesc.textContent = ds.desc || '';
-
-  // Image (optional)
-  if(ds.image){
-    imageImg.src = ds.image;
-    imageImg.alt = (ds.title ? ds.title + ' — thumbnail' : 'project image');
-    if(imageWrapper) imageWrapper.hidden = false;
-  } else if(imageWrapper) {
-    imageWrapper.hidden = true;
-  }
 
   // Objectives - accepts pipe | comma or semicolon separated
   if(ds.objectives){
@@ -144,6 +133,36 @@ function openModalFromDataset(ds){
       modalTags.appendChild(s);
     });
   }
+
+  // --- begin insert: modal images support ---
+const modalImages = document.getElementById('modal-images');
+// clear any previous images
+modalImages.innerHTML = '';
+
+// Accept either:
+//  - data-images="a.png|b.png|c.png"
+//  - data-image="single.png"  (fallback, keeps backwards compatibility)
+const imagesRaw = ds.images || ds.image || ''; // ds is your dataset object
+if (imagesRaw && imagesRaw.trim()) {
+  // pick delimiter: pipe, semicolon, or comma
+  const imgs = imagesRaw.split(/\||;|,/).map(s => s.trim()).filter(Boolean);
+
+  imgs.forEach(src => {
+    // create image element
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = modalTitle.textContent + ' — image';
+    modalImages.appendChild(img);
+  });
+
+  modalImages.hidden = false;
+  modalImages.setAttribute('aria-hidden', 'false');
+} else {
+  modalImages.hidden = true;
+  modalImages.setAttribute('aria-hidden', 'true');
+}
+// --- end insert ---
+
 
   // show modal
   modal.classList.add('open');
@@ -306,5 +325,3 @@ if(menuToggle && siteNav){
     }
   });
 }
-
-
