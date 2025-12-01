@@ -9,7 +9,6 @@ document.querySelectorAll('a.navlink[href^="#"]').forEach(a=>{
 });
 
 // Reveal projects when in view
-// REPLACE your existing IntersectionObserver callback with this version
 const projects = document.querySelectorAll('.project');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -26,19 +25,11 @@ const obs = new IntersectionObserver((entries) => {
 
     // compute and clamp
     let delay = Math.min(base + (index * step), maxDelay);
-
-    // apply inline style for transition-delay (affects all transitions)
     el.style.transitionDelay = `${delay}ms`;
-
-    // add revealed class — animation will play with the delay
     el.classList.add('revealed');
-
-    // unobserve to avoid repeated triggers; after animation, clear transitionDelay for future style changes
     obs.unobserve(el);
 
-    // optional: cleanup the inline delay after animation ends so future changes don't inherit it
     el.addEventListener('transitionend', function cleanup(e) {
-      // make sure we only remove delay after the opacity/transform finished
       if (e.propertyName === 'opacity' || e.propertyName === 'transform') {
         el.style.transitionDelay = '';
         el.removeEventListener('transitionend', cleanup);
@@ -78,7 +69,7 @@ function openModalFromDataset(ds){
   modalTitle.textContent = ds.title || ds['dataTitle'] || 'Project';
   modalDesc.textContent = ds.desc || '';
 
-  // Objectives - accepts pipe | comma or semicolon separated
+  // Objectives
   if(ds.objectives){
     const items = ds.objectives.split(/\||;|,/).map(s=>s.trim()).filter(Boolean);
     objectivesList.innerHTML = '';
@@ -122,7 +113,7 @@ function openModalFromDataset(ds){
     softwareSection.hidden = true;
   }
 
-  // Tags (existing behavior)
+  // Tags
   modalTags.innerHTML = '';
   const tagsRaw = ds.tags || ds['dataTags'] || '';
   if(tagsRaw){
@@ -139,12 +130,8 @@ const modalImages = document.getElementById('modal-images');
 // clear any previous images
 modalImages.innerHTML = '';
 
-// Accept either:
-//  - data-images="a.png|b.png|c.png"
-//  - data-image="single.png"  (fallback, keeps backwards compatibility)
-const imagesRaw = ds.images || ds.image || ''; // ds is your dataset object
+const imagesRaw = ds.images || ds.image || ''; 
 if (imagesRaw && imagesRaw.trim()) {
-  // pick delimiter: pipe, semicolon, or comma
   const imgs = imagesRaw.split(/\||;|,/).map(s => s.trim()).filter(Boolean);
 
   imgs.forEach(src => {
@@ -178,13 +165,11 @@ function closeModal(){
 // Attach click handlers to project cards
 projects.forEach(p=>{
   p.addEventListener('click', ()=>{
-    // Use dataset (dataset keys are camelCased)
     const ds = p.dataset;
     openModalFromDataset(ds);
   });
 });
 
-// existing close interactions
 close.addEventListener('click', closeModal);
 modal.addEventListener('click', e=>{
   if(e.target === modal) closeModal();
@@ -257,16 +242,16 @@ const projectCards = document.querySelectorAll('#projects .project');
 const loadMoreBtn = document.getElementById('load-more');
 const loadMoreWrapper = document.getElementById('load-more-wrapper');
 
-const MAX_VISIBLE = 4;
+const MAX_VISIBLE = 6;
 
-// Initially hide projects beyond the first 4
+// Initially hide projects beyond the first 6
 projectCards.forEach((card, index) => {
   if (index >= MAX_VISIBLE) {
     card.style.display = "none";
   }
 });
 
-// If there are 4 or fewer projects, hide the button
+// If there are 6 or fewer projects, hide the button
 if (projectCards.length <= MAX_VISIBLE) {
   loadMoreWrapper.style.display = "none";
 }
@@ -299,8 +284,7 @@ if(menuToggle && siteNav){
       // rotate the lines visually
       document.querySelector('.hamburger').style.transform = 'rotate(45deg)';
       document.querySelector('.hamburger').style.background = 'transparent';
-      document.querySelector('.hamburger::before'); // no-op (pseudo can't be styled here)
-      // small hack: create style for pseudo via class if needed
+      document.querySelector('.hamburger::before'); 
     } else {
       document.querySelector('.hamburger').style.transform = '';
       document.querySelector('.hamburger').style.background = '';

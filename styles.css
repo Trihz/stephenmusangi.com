@@ -37,8 +37,6 @@ body{
 @media (min-width: 481px) and (max-width: 900px) {
 }
 
-
-
 /* header */
 header{
   position: relative;
@@ -182,9 +180,6 @@ header{
   transform: translateX(-50%) scaleX(1);
 }
 
-
-
-
 /* hero section */
 .hero{
   display:grid;
@@ -249,14 +244,6 @@ header{
 @media (min-width: 481px) and (max-width: 900px) {
 }
 
-
-
-
-
-
-
-
-
 /* right column */
 .profile{
   display:flex;
@@ -298,11 +285,6 @@ header{
 @media (min-width: 481px) and (max-width: 900px) {
 }
 
-
-
-
-
-
 .info-card {
   padding: 18px 20px;
   border-radius: 14px;
@@ -334,28 +316,21 @@ header{
   border-radius: 10px;
 }
 
-
-
-
-
-
 /* projects */
 .projects{
   margin-top:30px;
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:18px
+  gap:18px;
 }
 .project {
   padding: 18px;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   cursor: pointer;
-
   opacity: 0;
   transform: translateY(28px) scale(.8);
   filter: blur(10px);
-
   transition:
     opacity 650ms cubic-bezier(.21,.79,.39,1),
     transform 650ms cubic-bezier(.21,.79,.39,1),
@@ -396,13 +371,13 @@ header{
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   background: transparent;
 }
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform .4s ease;
 }
 #load-more {
@@ -414,11 +389,31 @@ header{
   cursor: pointer;
   transition: 0.2s ease;
 }
-
 #load-more:hover {
   background: rgba(255,255,255,0.06);
 }
+.view-more-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+}
 
+.view-more-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.view-more-btn:active {
+  transform: scale(0.97);
+}
 
 
 /* about section */
@@ -499,9 +494,6 @@ header{
   object-fit: contain; 
   border-radius: 10px;
 }
-
-
-/* modal images container */
 .modal-images {
   background: rgba(255,255,255,0.045);
   padding: 10px;
@@ -509,7 +501,7 @@ header{
   margin-top: 12px;
   display: grid;
   gap: 10px;
-  grid-template-columns: 1fr;            /* 1 column on phones */
+  grid-template-columns: 1fr;  /* 1 column on phones */
 }
 /* 2+ columns on wider screens */
 @media (min-width: 640px) {
@@ -526,8 +518,6 @@ header{
   background: #0b1220;
   display: block;
 }
-
-
 
 .modal-section{
   margin-top:16px
@@ -613,17 +603,13 @@ header{
 .small{font-size:13px}
 a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#04263b;font-weight:700;text-decoration:none}
 
-
-
-
-
+/* footer styles */
 .site-footer{
   background: transparent;
   padding-top: 30px;
   color: var(--white);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
-
 .footer-inner{
   max-width: 1200px;
   margin: 0 auto;
@@ -631,14 +617,12 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   grid-template-columns: 1fr;
   gap: 28px;
 }
-
 .footer-hero.card{
   background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border-radius: var(--radius);
   padding: 28px;
   box-shadow: 0 6px 30px rgba(2,6,23,0.55);
 }
-
 .pill{
   display:inline-block;
   padding:6px 12px;
@@ -649,26 +633,22 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   font-size:0.9rem;
   margin-bottom:12px;
 }
-
 .footer-hero h2{
   margin:6px 0 20px 0;
   font-size:1.5rem;
   line-height:1.05;
   letter-spacing:-0.02em;
 }
-
 .footer-hero .sub{
   color: var(--muted);
   margin-bottom:20px;
 }
-
 .cta-row{ 
   display:flex; 
   gap:10px; 
   flex-wrap:wrap; 
   margin-top:15px; 
 }
-
 .btn{
   padding:10px 14px;
   border-radius:10px;
@@ -691,7 +671,6 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   color: var(--muted);
   border: none;
 }
-
 .call-btn {
   padding: 10px 16px;
   border-radius: 10px;
@@ -701,32 +680,26 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   color: var(--muted);
   transition: 0.25s ease;
 }
-
 .call-btn:hover {
   background: rgba(255,255,255,0.10);
   color: var(--white);
   transform: translateY(-2px);
 }
-
-
 .footer-grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap:18px;
   margin-top:6px;
 }
-
 .email-row {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .email-text {
   color: var(--muted);
   font-size: 0.95rem;
 }
-
 .phone-row {
   display: flex;
   align-items: center;
@@ -841,6 +814,15 @@ a.button{display:inline-block;padding:10px 14px;border-radius:10px;background:va
   border-radius:999px;
   font-size:0.85rem;
   border:1px solid rgba(255,255,255,0.02);
+}
+/* typical phones */
+@media (max-width: 480px) {
+  .badges{ 
+    margin-bottom: 40px;
+  }
+}
+/* Small tablets / larger phones */
+@media (min-width: 481px) and (max-width: 900px) {
 }
 
 .muted{ color:var(--muted); }
