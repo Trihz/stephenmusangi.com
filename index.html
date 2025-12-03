@@ -108,14 +108,14 @@
 
         <section id="projects" class="projects" aria-label="Projects">
           <div class="project card" 
-              data-title="LTE GPS Tracker"
-              data-desc="Low-power LTE Cat M1 / NB-IoT GPS tracker designed for asset monitoring, featuring efficient power management, GNSS accuracy, and cloud connectivity."
+              data-title="LTE GPS Tracker with Dual Power Modes"
+              data-desc="LTE Cat M1 / NB-IoT GPS tracker designed for asset monitoring, featuring efficient power management, GNSS accuracy, and cloud connectivity."
               data-image="assets/projects/LTE_Tracker/top.png|assets/projects/LTE_Tracker/bottom.png|assets/projects/LTE_Tracker/expose.png"
-              data-tags="IoT, GNSS, LTE, Low Power"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="KiCad|LTspice|Altium Designer|PlatformIO"
+              data-tags="IoT, GNSS, LTE-M, NB-IoT,Power Management"
+              data-objectives="Deliver accurate real-time GNSS tracking|Implement a dual power supply architecture (primary + backup)|Integrate a smart battery monitoring and management system|Enable secure cloud connectivity with OTA update support|Design a compact and production-ready PCB"
+              data-achieved="Developed a compact 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, high-sensitivity GNSS module, and a robust dual-power architecture. Implemented efficient power management with deep-sleep modes, battery protection, and real-time battery telemetry. Achieved stable GNSS performance with optimized antenna layout and ensured secure cloud communication with encrypted uplink/downlink. Added OTA firmware update support and validated hardware through functional, RF, and power-consumption testing."
+              data-challenges="Minimizing LTE transmit current spikes while maintaining stable power rails; Reducing GNSS cold-start time in low-visibility environments; Achieving RF isolation between LTE and GNSS modules in a compact PCB; Balancing reporting frequency with battery life constraints; Ensuring reliable LTE-M/NB-IoT network attachment across regions"
+              data-software="KiCAD|LTspice"
               data-repo="#"
               data-more="#"
             >
@@ -123,8 +123,8 @@
               <img src="assets/projects/LTE_Tracker/expose.png" alt="Custom USB Hub PCB">
             </div>
 
-            <h3>LTE GPS Tracker</h3>
-            <p class="muted small">LTE Cat M1/NB-IoT GPS tracker with power management and cloud integration.</p>
+            <h3>LTE GPS Tracker with dual Power Modes</h3>
+            <p class="muted small">LTE Cat M1 / NB-IoT GPS tracker designed for asset monitoring, featuring efficient power management (dual supply), GNSS accuracy, and cloud connectivity.</p>
 
             <div class="tags">
               <span class="tag">LTE</span>
@@ -137,14 +137,14 @@
           </div>
 
           <div class="project card" 
-              data-title="Dual Energy controller"
-              data-desc="General purpose energy controller for managing multiple power sources and loads."
-              data-tags="Energy,Power,Controller"
+              data-title="Multi-Channel Energy and I/O Controller with WiFi and LTE"
+              data-desc="A versatile industrial-grade energy management controller designed to monitor and switch multiple power sources—such as generator and mains—while managing connected loads intelligently. Features include WiFi and LTE connectivity for remote monitoring/control, real-time energy analytics, and a rugged hardware design suitable for demanding environments."
+              data-tags="Energy,Power Management,Controller,WiFi,LTE"
               data-image="assets/projects/Energy_controller/top.png|assets/projects/Energy_controller/bottom.png|assets/projects/Energy_controller/expose.png"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="KiCad|LTspice|Altium Designer|PlatformIO"
+              data-objectives="Careful real-time monitoring and switching between multiple power sources|Control and schedule various loads based on energy availability|Integrate WiFi and LTE connectivity for remote monitoring and control|Implement a user-friendly interface for configuration and status updates|Design a robust PCB suitable for industrial environments"
+              data-achieved="Designed a multi-channel energy management PCB integrating power-source sensing, load switching relays/MOSFETs, and isolated I/O channels. Implemented real-time monitoring for generator and mains inputs, along with automated switching logic based on voltage thresholds and user-defined priorities. Added WiFi and LTE modules for cloud connectivity, enabling remote control and telemetry. Developed a responsive local web interface for configuration and status viewing. Conducted hardware validation for thermal stability, noise immunity, and long-term reliability in industrial conditions."
+              data-challenges="Managing electrical noise and transients from generators and high-load switching; Ensuring seamless source switching without brownouts or voltage dips; Maintaining stable communication over LTE in low-signal or rural areas; Isolating high-voltage sections from low-voltage logic for safety and signal integrity; Balancing real-time system responsiveness with power efficiency; Designing proper thermal paths for high-current loads in a compact PCB layout"
+              data-software="EasyEDA Pro Edition"
               data-repo="#"
               data-more="#"
               >
@@ -152,13 +152,15 @@
                 <img src="assets/projects/Energy_controller/expose.png" alt="Custom USB Hub PCB">
               </div>
 
-              <h3>Dual Energy controller</h3>
-              <p class="muted small">General purpose energy controller for managing multiple power sources and loads.</p>
+              <h3>Multi Channel Energy and IO control with WiFi and LTE</h3>
+              <p class="muted small">General purpose energy controller for managing multiple power sources (generator and mains) and loads with WiFi and LTE connectivity.</p>
 
               <div class="tags">
                 <span class="tag">Energy</span>
-                <span class="tag">Power</span>
+                <span class="tag">Power Management</span>
                 <span class="tag">Controller</span>
+                <span class="tag">WiFi</span>
+                <span class="tag">LTE</span>
               </div>
 
               <button class="view-more-btn">View PCB →</button>
@@ -166,13 +168,13 @@
 
           <div class="project card" 
               data-title="Inertia-Based LED Controller"
-              data-desc="Inertia-Based LED Controller for dynamic lighting effects based on motion sensing."
+              data-desc="An LED strip controller that uses inertial measurement unit (IMU) data to create dynamic lighting effects based on motion and orientation."
               data-image="assets/projects/Inertia-Based LED Controller/top.png|assets/projects/Inertia-Based LED Controller/bottom.png|assets/projects/Inertia-Based LED Controller/expose.png"
-              data-tags="IMU,LED,Controller,Inertia,Lighting,Effects"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="EasyEDA Pro|LTspice|"
+              data-tags="IMU,LED,Controller,Inertia,Lighting Effects"
+              data-objectives="Capture real-time motion and orientation data using an IMU|Process IMU data to generate dynamic lighting effects|Control LED strips with precise timing and color management|Implement power-efficient operation for battery-powered use|Design a compact PCB"
+              data-achieved="Developed a PCB integrating an IMU sensor and microcontroller to read motion data and control LED strips. Implemented algorithms to translate IMU readings into dynamic lighting effects, such as color shifts, brightness changes, and pattern variations based on movement. Optimized power consumption through efficient coding practices and low-power modes for battery operation. Created a compact and manufacturable PCB layout with proper signal integrity and power delivery considerations."
+              data-challenges="Integrating IMU data processing with LED control for smooth effects; Managing power consumption for portable applications; Ensuring reliable communication between the microcontroller and LED strips; Designing a user-friendly interface for effect customization; Achieving a compact and manufacturable PCB layout"
+              data-software="EasyEDA Pro Edition"
               data-repo="#"
               data-more="#"
             >
@@ -181,7 +183,7 @@
             </div>
 
             <h3>Inertia-Based LED Controller</h3>
-            <p class="muted small">Inertia-Based LED Controller for dynamic lighting effects based on motion sensing.</p>
+            <p class="muted small">An LED strip controller that uses inertial measurement unit (IMU) data to create dynamic lighting effects based on motion and orientation.</p>
 
             <div class="tags">
               <span class="tag">IMU</span>
@@ -195,14 +197,14 @@
           </div>
 
           <div class="project card" 
-              data-title="Cable Orientation Tester"
-              data-desc="Cable Orientation Tester for verifying correct cable connections and orientations."
+              data-title="Cable Orientation and Connection Tester"
+              data-desc="A PCB that tests and verifies correct cable connections and orientations for various types of cables to ensure proper functionality and prevent damage."
               data-image="assets/projects/Cable Orientation Tester/top.png|assets/projects/Cable Orientation Tester/bottom.png|assets/projects/Cable Orientation Tester/expose.png"
-              data-tags="Cable,Tester,Orientation,Verification"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="KiCad|LTspice"
+              data-tags="Cable,Tester,Orientation,Connection"
+              data-objectives="Detect and verify correct cable orientations for multiple cable types|Test electrical continuity and signal integrity of connected cables|Provide visual feedback (through LEDs) on connection status|Design a user-friendly interface for easy operation|Create a compact and durable PCB suitable for field use"
+              data-achieved="Developed a PCB that interfaces with various cable types to detect orientation and verify connections. Implemented circuitry to test electrical continuity and signal integrity, providing real-time feedback through LED indicators. Designed a user-friendly interface with buttons for initiating tests and selecting cable types. Created a compact and rugged PCB layout optimized for field use, ensuring durability and ease of handling."
+              data-challenges="Accommodating multiple cable types and connectors in a single design; Ensuring accurate detection of cable orientation and connection status; Managing signal integrity during testing to avoid false positives/negatives; Designing for ease of use in field conditions; Creating a durable PCB layout that withstands handling and environmental factors"
+              data-software="EasyEDA Pro Edition"
               data-repo="#"
               data-more="#"
             >
@@ -210,8 +212,8 @@
               <img src="assets/projects/Cable Orientation Tester/expose.png" alt="Custom USB Hub PCB">
             </div>
 
-            <h3>Cable Orientation Tester</h3>
-            <p class="muted small">Cable Orientation Tester for verifying correct cable connections and orientations.</p>
+            <h3>Cable Orientation and Connection Tester</h3>
+            <p class="muted small">A PCB that tests and verifies correct cable connections and orientations for various types of cables to ensure proper functionality and prevent damage.</p>
 
             <div class="tags">
               <span class="tag">Cable</span>
@@ -223,13 +225,13 @@
 
           <div class="project card" 
               data-title="ESP32 HID Device"
-              data-desc="ESP32-based USB HID device for custom input/output applications and peripherals."
+              data-desc="A Human Interface Device (HID) based on the ESP32 microcontroller, designed for custom input/output applications and peripherals."
               data-image="assets/projects/ESP32 HID Device/top.png|assets/projects/ESP32 HID Device/bottom.png|assets/projects/ESP32 HID Device/expose.png"
               data-tags="ESP32,USB,HID,Input,Output"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="KiCad|LTspice|Altium Designer|PlatformIO"
+              data-objectives="Implement USB HID functionality using the ESP32 microcontroller|Design custom input/output using buttons and USB peripheral|Ensure compatibility with standard HID protocols|Optimize power consumption for portable applications|Create a compact and manufacturable PCB layout"
+              data-achieved="Developed a PCB integrating the ESP32 microcontroller with USB HID capabilities, allowing for custom input/output functionality. Implemented firmware to handle HID protocols and manage button inputs, enabling seamless interaction with host devices. Optimized power consumption through efficient coding practices and low-power modes for portable use. Created a compact and manufacturable PCB layout with proper signal integrity and power delivery considerations."
+              data-challenges=" Implementing USB HID protocols on the ESP32 platform; Managing reliable button input and debouncing; Ensuring compatibility with various host devices; Optimizing power consumption for battery-powered applications; Designing a compact and manufacturable PCB layout"
+              data-software="EasyEDA Pro Edition"
               data-repo="#"
               data-more="#"
             >
@@ -238,7 +240,7 @@
             </div>
 
             <h3>ESP32 HID Device</h3>
-            <p class="muted small">ESP32-based USB HID device for custom input/output applications and peripherals.</p>
+            <p class="muted small">A Human Interface Device (HID) based on the ESP32 microcontroller, designed for custom input/output applications and peripherals.</p>
 
             <div class="tags">
               <span class="tag">ESP32</span>
@@ -252,13 +254,13 @@
 
           <div class="project card" 
               data-title="ESP32 S3-Based Control Board"
-              data-desc="ESP32 S3-Based Control Board for advanced embedded applications."
+              data-desc="A control board based on the ESP32 S3 microcontroller, designed for embedded applications requiring WiFi, Bluetooth, real-time clock and Data logging capabilities."
               data-image="assets/projects/ESP32 S3-Based Control Board/top.png|assets/projects/ESP32 S3-Based Control Board/bottom.png|assets/projects/ESP32 S3-Based Control Board/expose.png"
               data-tags="ESP32 S3,Control Board"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="KiCad|LTspice|Altium Designer|PlatformIO"
+              data-objectives="Provide WiFi and Bluetooth connectivity|Integrate a real-time clock for timekeeping|Enable data logging capabilities|Support various peripheral interfaces (I2C & UART)|Design a compact and manufacturable PCB layout"
+              data-achieved="Developed a PCB integrating the ESP32 S3 microcontroller with WiFi and Bluetooth modules, a real-time clock, and data logging functionality through SD card. Implemented firmware to manage connectivity, timekeeping, and data storage using various peripheral interfaces. Created a compact and manufacturable PCB layout with proper signal integrity and power delivery considerations."
+              data-challenges="Ensuring reliable WiFi and Bluetooth performance in a compact design; Integrating real-time clock functionality with accurate timekeeping; Managing data logging efficiently to prevent data loss; Supporting multiple peripheral interfaces without signal interference; Designing a compact and manufacturable PCB layout"
+              data-software="EasyEDA Pro Edition"
               data-repo="#"
               data-more="#"
             >
@@ -267,7 +269,7 @@
             </div>
 
             <h3>ESP32 S3-Based Control Board</h3>
-            <p class="muted small">ESP32 S3-Based Control Board for advanced embedded applications.</p>
+            <p class="muted small">A control board based on the ESP32 S3 microcontroller, designed for embedded applications requiring WiFi, Bluetooth, real-time clock and Data logging capabilities.</p>
 
             <div class="tags">
               <span class="tag">ESP32 S3</span>
@@ -278,14 +280,14 @@
           </div>
 
           <div class="project card" 
-              data-title="Compute Module 4 Carrier Board"
-              data-desc="Compute Module 4 Carrier Board for servo control and sensor interfacing."
+              data-title="Compute Module 4/5 Carrier Board"
+              data-desc="Compute Module 4 Carrier Board for servo control and sensor interfacing, camera support and Google Coral integration."
               data-image="assets/projects/Compute Module 4 Carrier Board/top.png|assets/projects/Compute Module 4 Carrier Board/bottom.png|assets/projects/Compute Module 4 Carrier Board/expose.png"
               data-tags="Compute Module 4,Carrier Board"
-              data-objectives="Provide real-time GPS tracking|Enable low-power LTE connectivity|Achieve multi-day battery operation|Integrate cloud reporting and OTA updates|Design compact and rugged PCB"
-              data-achieved="Developed a 4-layer PCB integrating an LTE Cat M1/NB-IoT modem, uBlox GNSS module, and power management system. Implemented sleep states and periodic reporting to extend battery life, optimized antenna placement for GNSS/LTE performance, and created a secure cloud communication protocol."
-              data-challenges="Managing LTE module current spikes; optimizing GPS cold-start time; achieving RF isolation in a small form factor; power budgeting for long battery life; ensuring reliable network registration in low-signal areas."
-              data-software="KiCad|LTspice|Altium Designer|PlatformIO"
+              data-objectives="Support Raspberry Pi Compute Module 4 and 5|Provide multiple servo control outputs|Integrate sensor interfaces|Enable camera connectivity|Facilitate Google Coral AI accelerator integration"
+              data-achieved="Designed a carrier board compatible with Raspberry Pi Compute Module 4 and 5, featuring multiple servo control outputs, sensor interfaces (I2C, SPI, UART), camera connectivity via CSI, and a dedicated slot for Google Coral AI accelerator. Implemented robust power management to support high-current servo operations and ensured signal integrity for camera and AI module connections. Created a compact PCB layout optimized for thermal performance and manufacturability."
+              data-challenges="Managing power delivery for multiple high-current servo outputs; Ensuring signal integrity for high-speed camera and AI module interfaces; Accommodating various sensor interfaces in a compact design; Providing adequate thermal management for the Compute Module and peripherals; Designing a manufacturable PCB layout with proper component placement"
+              data-software="KiCad"
               data-repo="#"
               data-more="#"
             >
@@ -293,8 +295,8 @@
               <img src="assets/projects/Compute Module 4 Carrier Board/expose.png" alt="Custom USB Hub PCB">
             </div>
 
-            <h3>Compute Module 4 Carrier Board</h3>
-            <p class="muted small">Compute Module 4 Carrier Board for servo control and sensor interfacing.</p>
+            <h3>Compute Module 4/5 Carrier Board</h3>
+            <p class="muted small">Compute Module 4 Carrier Board for servo control and sensor interfacing, camera support and Google Coral integration.</p>
 
             <div class="tags">
               <span class="tag">CM4</span>
@@ -305,6 +307,64 @@
             <button class="view-more-btn">View PCB →</button>
           </div>
 
+          <div class="project card" 
+              data-title="LED Controller"
+              data-desc="LED controller with USB C Power Delivery Input, MCU control, Timer circuit and vibration sensor integration."
+              data-image="assets/projects/LED Controller/top.png|assets/projects/LED Controller/bottom.png|assets/projects/LED Controller/expose.png"
+              data-tags="LED Controller,USB C Power Delivery,MCU,Timer,Vibration Sensor"
+              data-objectives="Interface with USB C Power Delivery for flexible power input|Implement MCU control for dynamic LED effects|Integrate a timer circuit for scheduled lighting patterns|Incorporate a vibration sensor for motion-responsive lighting|Design a compact and manufacturable PCB layout"
+              data-achieved="Developed an LED controller PCB featuring USB C Power Delivery input for versatile power options, an MCU for dynamic LED effect control, a timer circuit for scheduled lighting patterns, and a vibration sensor for motion-responsive lighting.Created a compact and manufacturable PCB layout with attention to signal integrity and power management."
+              data-challenges="Ensuring stable power delivery from USB C PD under varying load conditions; Implementing responsive MCU control for real-time LED effects; Designing an accurate timer circuit for reliable scheduling; Integrating a vibration sensor with minimal noise interference; Creating a compact PCB layout that meets manufacturability standards"
+              data-software="KiCad"
+              data-repo="#"
+              data-more="#"
+            >
+            <div class="project-image">
+              <img src="assets/projects/LED Controller/expose.png" alt="Custom USB Hub PCB">
+            </div>
+
+            <h3>LED Controller</h3>
+            <p class="muted small">LED controller with USB C Power Delivery Input, MCU control, Timer circuit and vibration sensor integration.</p>
+
+            <div class="tags">
+              <span class="tag">LED Controller</span>
+              <span class="tag">USB C Power Delivery</span>
+              <span class="tag">Timer</span>
+              <span class="tag">Vibration Sensor</span>
+            </div>
+
+            <button class="view-more-btn">View PCB →</button>
+          </div>
+
+          <div class="project card" 
+              data-title="E-Bike Controller"
+              data-desc="An E-Bike controller PCB designed to manage motor control, battery management, Lights switching, and user interface for electric bicycles."
+              data-image="assets/projects/E-Bike Controller/top.png|assets/projects/E-Bike Controller/bottom.png|assets/projects/E-Bike Controller/expose.png"
+              data-tags="E-Bike,Motor Control,Battery Management,User Interface"
+              data-objectives="Implement motor control for various e-bike motor types|Integrate battery management system for safe charging/discharging|Provide lights switching and user interface controls|Ensure robust protection features (overcurrent and thermal shutdown)|Design a compact and manufacturable PCB layout"
+              data-achieved="Developed an E-Bike controller PCB featuring motor control circuitry compatible with different e-bike motor types, a battery management system for safe operation, lights switching controls, and user interface elements. Incorporated protection features such as overcurrent and thermal shutdown to ensure reliability. Created a compact and manufacturable PCB layout optimized for thermal performance and signal integrity."
+              data-challenges="Developing motor control algorithms compatible with different e-bike motor types; Integrating a reliable battery management system to ensure safety and longevity; Designing user-friendly controls for lights switching and other functions; Implementing protection features to safeguard against overcurrent and thermal issues; Creating a compact PCB layout optimized for thermal performance and manufacturability"
+              data-software="EasyEDA Pro Edition"
+              data-repo="#"
+              data-more="#"
+            >
+            <div class="project-image">
+              <img src="assets/projects/E-Bike Controller/expose.png" alt="Custom USB Hub PCB">
+            </div>
+
+            <h3>E-Bike Controller</h3>
+            <p class="muted small">An E-Bike controller PCB designed to manage motor control, battery management, Lights switching, and user interface for electric bicycles.</p>
+
+            <div class="tags">
+              <span class="tag">E-Bike</span>
+              <span class="tag">Motor Control</span>
+              <span class="tag">User Interface</span>
+            </div>
+
+            <button class="view-more-btn">View PCB →</button>
+          </div>
+
+
         </section>
 
         <div id="load-more-wrapper" style="text-align:center; margin-top:20px;">
@@ -312,7 +372,7 @@
         </div>
 
 
-        <section id="about" style="margin-top:26px">
+        <section id="aboEut" style="margin-top:26px">
           <div class="card">
             <h3>About Me</h3>
 
